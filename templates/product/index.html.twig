@@ -1,0 +1,33 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+    TITRE
+{% endblock %}
+
+
+
+{% block body %}
+<p>Liste des produits</p>
+<table>
+    <thead>
+        <tr>
+            <td>Nom</td>
+            <td>Catégorie</td>
+            <td>Prix</td>
+            <td>Type de produit</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+            <tr>
+                <td> <a href="{{  path('product_show', {slug:product.slug} ) }}"> {{ product.name }} </a></td>
+                <td>{{ product.getCategory().name }}</td>
+                <td>{{ product.price }} € </td>
+                <td>{{ product.getTypeProduct().label }}</td>
+                <td><button>Add to Cart</button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

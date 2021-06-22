@@ -1,0 +1,10 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+    Detail {{ product.name }}
+{% endblock %}
+
+{% block body %}
+    <h3>Détails : {{ product.name }} : {{ product.price }} €</h3>
+{% include('product/about.html.twig')%}
+{% endblock %}
