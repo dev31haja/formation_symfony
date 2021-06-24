@@ -20,7 +20,7 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
-    App\EventListener\SlugSubscriber:
+    App\EventListener\DoctrineSlugSubscriber:
         tags:
             - name: 'doctrine.event_subscriber'
     # add more service definitions when explicit configuration is needed

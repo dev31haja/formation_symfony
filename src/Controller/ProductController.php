@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use App\Service\Calculator;
@@ -76,7 +77,7 @@ class ProductController extends AbstractController
         $jsonContent = $serializer->serialize($cart, 'json');
         return new JsonResponse(["cart" => $jsonContent]);
     }
-
+    
     public function editProduct(Request $request, $id){
         $this->denyAccessUnlessGranted('ROLE_MANAGER');
 
@@ -90,6 +91,28 @@ class ProductController extends AbstractController
             // ...
             ->getForm();
         */
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $product = $form->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($product);
+            $manager->flush();
+            
+            return $this->redirectToRoute('product_list');
+        }
+
+        return $this->render('product/edit_product.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
+    public function createProduct(Request $request){
+        $this->denyAccessUnlessGranted('ROLE_MANAGER');
+
+        $product= new Product();
+        $form = $this->createForm(ProductType::class, $product);
+       
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             

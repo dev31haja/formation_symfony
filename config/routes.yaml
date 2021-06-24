@@ -20,6 +20,10 @@ edit_product:
   requirements:
     id: '\d+'
 
+create_product:
+  path: /createProduct/
+  controller: App\Controller\ProductController::createProduct
+
 log_out:
   path: /logOut
   controller: App\Controller\ProductController::logOut
