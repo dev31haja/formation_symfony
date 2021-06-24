@@ -25,9 +25,13 @@
                 <td>{{ product.getCategory().name }}</td>
                 <td>{{ product.price }} € </td>
                 <td>{{ product.getTypeProduct().label }}</td>
-                <td><button>Add to Cart</button></td>
+                <td><button class="btn_add" url="{{  path('add_cart_product', {id:product.id} ) }}">Add to Cart</button></td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
+{% include('product/about.html.twig')%}
+{{ encore_entry_script_tags('cart') }}
+
 {% endblock %}
+

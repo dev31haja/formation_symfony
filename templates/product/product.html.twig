@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block body %}
-    <h3>Détails : {{ product.name }} : {{ product.price }} €</h3>
+    <h3>{{ product.name }} ({{ product.slug }})</h3>
+    <p>
+        Prix : {{ product.price }} €<br>
+        Catégorie : {{ product.getCategory().name }} <br>
+        Type (TVA) : {{ product.getTypeProduct().label }} => {{ product.getTypeProduct().tva }} % <br><br>
+        <button>
+            <a href="{{  path('edit_product', {id:product.id} ) }}"> Edit </a>
+        </button>
+    </p>
 {% include('product/about.html.twig')%}
 {% endblock %}

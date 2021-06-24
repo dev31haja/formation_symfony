@@ -24,6 +24,7 @@ class CategoryFixtures extends Fixture
             $category->setName($cat_name);
             $cat_slug = $this->slug->slugify($cat_name);
             $category->setSlug($cat_slug);
+            $category->setIsEnabled(true);
             
             $manager->persist($category);
         }

@@ -1,13 +1,25 @@
 product_list:
-  path: /{page}
+  path: /list
   controller: App\Controller\ProductController::list
-  requirements:
-    page: '\d+'
-  defaults:
-    page: 1
 
 product_show:
-  path: /{slug}
+  path: /show/{slug}
   controller: App\Controller\ProductController::show
   requirements:
     page: '[\S]+'
+
+add_cart_product:
+  path: /add/{id}
+  controller: App\Controller\ProductController::addCartProduct
+  requirements:
+    id: '\d+'
+
+edit_product:
+  path: /editProduct/{id}
+  controller: App\Controller\ProductController::editProduct
+  requirements:
+    id: '\d+'
+
+log_out:
+  path: /logOut
+  controller: App\Controller\ProductController::logOut
