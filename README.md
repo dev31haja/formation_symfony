@@ -21,3 +21,7 @@ Commandes pratiques.
 => Valitadeurs et contraintes d'entités
 	composer require symfony/validator doctrine/annotations
 	php bin/console make:validator
+
+=> Evenements
+	php bin/console make:subscriber
+	php bin/console debug:event-dispatcher

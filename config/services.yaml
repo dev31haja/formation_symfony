@@ -26,6 +26,10 @@ services:
             
     App\ParamConverter\CustomParamConverter:
         tags:
-            - {name : 'request.param_converter', converter: CustomParamConverter}  
+            - {name : 'request.param_converter', converter: CustomParamConverter}
+
+    App\EventSubscriber\AuthFailSubscriber:
+        tags:
+            - {name: 'kernel.event_listener', event: 'Symfony\Component\Security\Http\Event\LoginFailureEvent'}
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
