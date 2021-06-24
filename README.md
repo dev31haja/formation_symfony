@@ -17,3 +17,7 @@ Commandes pratiques.
 	php bin/console make:fixtures
 	php bin/console doctrine:migrations:migrate first -n
 	php bin/console doctrine:fixtures:load
+
+=> Valitadeurs et contraintes d'entités
+	composer require symfony/validator doctrine/annotations
+	php bin/console make:validator

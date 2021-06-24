@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Form\CategoryType;
 use App\Form\ProductType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Service\Calculator;
 use Psr\Log\LoggerInterface;
@@ -20,11 +22,13 @@ class ProductController extends AbstractController
     private $calco;
     private $logger;
     private $productRepo;
+    private $catRepo;
 
-    public function __construct(Calculator $calculator, LoggerInterface $logger, ProductRepository $product_repo){
+    public function __construct(Calculator $calculator, LoggerInterface $logger, ProductRepository $product_repo, CategoryRepository $category_repo){
         $this->calco = $calculator;    
         $this->logger = $logger;
         $this->productRepo = $product_repo;
+        $this->catRepo = $category_repo;
     }
 
     public function list(){
@@ -125,6 +129,29 @@ class ProductController extends AbstractController
         }
 
         return $this->render('product/edit_product.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
+    public function editCategory(Request $request, $id)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MANAGER');
+
+        $category= $this->catRepo->find($id);
+        $form = $this->createForm(CategoryType::class, $category);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $category = $form->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($category);
+            $manager->flush();
+            
+            return $this->redirectToRoute('product_list');
+        }
+
+        return $this->render('category/edit_category.html.twig',[
             'form' => $form->createView()
         ]);
     }

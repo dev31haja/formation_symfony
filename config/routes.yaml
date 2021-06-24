@@ -20,6 +20,12 @@ edit_product:
   requirements:
     id: '\d+'
 
+edit_category:
+  path: /editCategory/{id}
+  controller: App\Controller\ProductController::editCategory
+  requirements:
+    id: '\d+'
+
 create_product:
   path: /createProduct/
   controller: App\Controller\ProductController::createProduct

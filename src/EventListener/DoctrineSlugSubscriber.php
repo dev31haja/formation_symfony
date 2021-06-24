@@ -1,7 +1,7 @@
 <?php
 namespace App\EventListener;
 
-
+use App\Entity\Category;
 use App\Entity\Product;
 use App\Service\Slugify;
 use Doctrine\Common\EventSubscriber;
@@ -47,10 +47,10 @@ class DoctrineSlugSubscriber implements EventSubscriber{
         $entity = $args->getObject();
         $entityManager = $args->getObjectManager();
         
-        if ($entity instanceof Product) {
+        if ($entity instanceof Product || $entity instanceof Category) {
             
             if(array_key_exists('name', $args->getEntityChangeSet())){
-                $this->logger->debug('preUpdate Product => name changed');
+                $this->logger->debug('preUpdate Product/Category => name changed');
                 // update slug based on new name
                 $entity->setSlug($this->slugify_service->slugify($entity->getName()));
             }
