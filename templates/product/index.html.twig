@@ -23,7 +23,7 @@
             <tr>
                 <td><a href="{{  path('product_show', {slug:product.slug} ) }}"> {{ product.name }} </a></td>
                 <td>
-                    <a href="{{  path('edit_category', {id:product.getCategory().id} ) }}">{{ product.getCategory().name }}</a> <br>
+                    <a href="{{  path('edit_category', {slug:product.getCategory().slug} ) }}">{{ product.getCategory().name }}</a> <br>
                     <small>({{ product.getCategory().slug }})</small>
                 </td>
                 <td>{{ product.price }} € </td>

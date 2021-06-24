@@ -23,5 +23,9 @@ services:
     App\EventListener\DoctrineSlugSubscriber:
         tags:
             - name: 'doctrine.event_subscriber'
+            
+    App\ParamConverter\CustomParamConverter:
+        tags:
+            - {name : 'request.param_converter', converter: CustomParamConverter}  
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
