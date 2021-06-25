@@ -45,5 +45,8 @@ Commandes pratiques.
 => Commandes
 	* https://symfony.com/doc/current/console.html
 
+=> Testing
+	* php ./vendor/bin/phpunit
+
 => Extras
 	* https://github.com/KnpLabs/DoctrineBehaviors
