@@ -65,7 +65,7 @@ class DoctrineSlugSubscriber implements EventSubscriber{
         $entity = $args->getObject();
         $entityManager = $args->getObjectManager();
 
-        if ($entity instanceof Product) {
+        if ($entity instanceof Product || $entity instanceof Category) {
             $entity->setSlug($this->slugify_service->slugify($entity->getName()));
         }
     }

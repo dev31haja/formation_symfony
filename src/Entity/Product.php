@@ -14,8 +14,13 @@ use App\Repository\ProductRepository;
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  * @UniqueEntity("name", message="Ce nom est déjà utilisé")
- * @ApiResource(normalizationContext={"groups"={"product"}})
+ * #ApiResource(normalizationContext={"groups"={"product"}})
  */
+#[ApiResource(
+    collectionOperations: ['get'],
+    itemOperations: ['get'],
+    normalizationContext: ['group' => ['product']]
+)]
 class Product
 {
     /**

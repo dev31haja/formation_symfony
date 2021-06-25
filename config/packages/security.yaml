@@ -28,6 +28,7 @@ security:
                 require_previous_session: false
         api:
             pattern: ^/api/
+            security: false # for api docs DEV only !!!
             stateless: true
             lazy: true
             provider: app_user_provider
