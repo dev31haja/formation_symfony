@@ -25,3 +25,13 @@ Commandes pratiques.
 => Evenements
 	php bin/console make:subscriber
 	php bin/console debug:event-dispatcher
+
+=> API :D
+	composer require "lexik/jwt-authentication-bundle"
+	php bin/console lexik:jwt:generate-keypair
+	curl -X POST -H "Content-Type: application/json" http://localhost:8000/api/login_check -d '{"username":"manager@formation.com","password":"password"}'
+	composer require api
+
+	https://api-platform.com/docs/core/serialization/
+
+	

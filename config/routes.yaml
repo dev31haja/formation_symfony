@@ -24,6 +24,9 @@ create_product:
   path: /createProduct/
   controller: App\Controller\ProductController::createProduct
 
+api_login_check:
+  path: /api/login_check
+
 log_out:
   path: /logOut
   controller: App\Controller\ProductController::logOut

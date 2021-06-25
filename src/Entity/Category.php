@@ -5,11 +5,14 @@ namespace App\Entity;
 use App\Repository\CategoryRepository;
 use App\Validator as CustomAssert;
 use Doctrine\Common\Collections\ArrayCollection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Entity\Product;
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ApiResource(normalizationContext={"groups"={"category"}})
  */
 class Category
 {
@@ -23,11 +26,13 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      * @CustomAssert\CategoryName
+     * @Groups({"category","product"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
+     * @Groups("category")
      */
     private $products;
 
