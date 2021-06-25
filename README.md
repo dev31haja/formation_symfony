@@ -33,5 +33,7 @@ Commandes pratiques.
 	composer require api
 
 	https://api-platform.com/docs/core/serialization/
+	https://api-platform.com/docs/core/controllers/
 
-	
+=> Commandes
+	https://symfony.com/doc/current/console.html
